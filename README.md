@@ -1,3 +1,4 @@
+![OUCH Executed Order](https://github.com/itiviti-cpp-master/ouch-executed-order/workflows/OUCH%20Executed%20Order/badge.svg?branch=master)
 # Декодирование сообщения ExecutedOrder
 ## Новый протокол!
 В примере на лекции мы познакомились с протоколом BOE, используемом преимущественно на торговых площадках, принадлежащих бирже CBOE.
