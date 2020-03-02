@@ -11,7 +11,7 @@ struct ExecutionDetails
 {
     char cl_ord_id[15];
     unsigned match_number;
-    double filled_volume;
+    unsigned filled_volume;
     double price;
     char counterpart[5];
     LiquidityIndicator liquidity_indicator;
