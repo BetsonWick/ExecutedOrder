@@ -14,7 +14,7 @@
 
 ## Задание
 Требуется реализовать декодер для сообщения ExecutedOrder (см. [protocol
-specifications](files/doc/OUCH_for_Nasdaq_Nordic_4.03.2.pdf)) имеющий следующий интерфейс:
+specifications](https://github.com/itiviti-cpp-master/syllabus/wiki/files/doc/BATS_Europe_BOE2_Specification.pdf)) имеющий следующий интерфейс:
 ```cpp
 enum class LiquidityIndicator {
     Added,
