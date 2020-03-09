@@ -4,6 +4,7 @@ ExecutionDetails decode_executed_order(const std::vector<unsigned char> & messag
 {
     ExecutionDetails exec_details;
     // fill exec_details fields
+    static_cast<void>(message); // to suppress a warning about unused variable
     return exec_details;
 }
 

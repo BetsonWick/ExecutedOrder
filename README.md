@@ -1,4 +1,3 @@
-![OUCH Executed Order](https://github.com/itiviti-cpp-master/ouch-executed-order/workflows/OUCH%20Executed%20Order/badge.svg?branch=master)
 # Декодирование сообщения ExecutedOrder
 ## Новый протокол!
 В примере на лекции мы познакомились с протоколом BOE, используемом преимущественно на торговых площадках, принадлежащих бирже CBOE.
@@ -13,8 +12,7 @@
 Заказ может быть исполнен полностью или частично, по указанной в нём цене или по более лучшей.
 
 ## Задание
-Требуется реализовать декодер для сообщения ExecutedOrder (см. [protocol
-specifications](https://github.com/itiviti-cpp-master/syllabus/wiki/files/doc/OUCH_for_Nasdaq_Nordic_4.03.2.pdf)) имеющий следующий интерфейс:
+Требуется реализовать декодер для сообщения ExecutedOrder (см. [protocol specifications](doc/OUCH_for_Nasdaq_Nordic_4.03.2.pdf)) имеющий следующий интерфейс:
 ```cpp
 enum class LiquidityIndicator {
     Added,
@@ -23,11 +21,11 @@ enum class LiquidityIndicator {
 
 struct ExecutionDetails
 {
-    char cl_ord_id[15];
+    std::string cl_ord_id;
     unsigned match_number;
     unsigned filled_volume;
     double price;
-    char counterpart[5];
+    std::string counterpart;
     LiquidityIndicator liquidity_indicator;
     bool internalized;
     bool self_trade;
@@ -37,9 +35,21 @@ ExecutionDetails decode_executed_order(const std::vector<unsigned char> & messag
 {
     ExecutionDetails exec_details;
     // fill exec_details fields
+    //   exec_details.cl_ord_id.assign(char_ptr, length);
+    // or
+    //   exec_details.cl_ord_id = std::string{char_ptr, length};
+    // ...
+    //   exec_details.filled_volume = x;
+    // ...
     return exec_details;
 }
 ```
+
+Чтобы получить указатель на `char`, требуемый для присваивания в строки, из вектора `unsigned char`, можно:
+```cpp
+const char * str = reinterpret_cast<const char *>(&message[n]);
+```
+где `n` - индекс первого символа строки внутри сообщения.
 
 Требуемые поля:
 * Order Token -> cl_ord_id

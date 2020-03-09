@@ -1,19 +1,21 @@
 #pragma once
 
+#include <string>
 #include <vector>
 
 enum class LiquidityIndicator {
+    None,
     Added,
     Removed
 };
 
 struct ExecutionDetails
 {
-    char cl_ord_id[15];
+    std::string cl_ord_id;
     unsigned match_number;
     unsigned filled_volume;
     double price;
-    char counterpart[5];
+    std::string counterpart;
     LiquidityIndicator liquidity_indicator;
     bool internalized;
     bool self_trade;
